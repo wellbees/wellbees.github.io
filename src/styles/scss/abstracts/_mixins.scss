@@ -1,0 +1,42 @@
+@mixin transition($second) {
+    -webkit-transition: all $second ease;
+    -moz-transition: all $second ease;
+    -ms-transition: all $second ease;
+    -o-transition: all $second ease;
+    transition: all $second ease;
+}
+
+
+@mixin shadow($c, $d, $e, $f, $clr) {
+    -webkit-box-shadow: $c $d $e $f $clr;
+    -moz-box-shadow: $c $d $e $f $clr;
+    -ms-box-shadow: $c $d $e $f $clr;
+    -o-box-shadow: $c $d $e $f $clr;
+    box-shadow: $c $d $e $f $clr;
+}
+
+
+@mixin translate($x, $y) {
+    -webkit-transform: translateX($x) translateY($y);
+    -moz-transform: translateX($x) translateY($y);
+    -ms-transform: translateX($x) translateY($y);
+    -o-transform: translateX($x) translateY($y);
+    transform: translateX($x) translateY($y);
+}
+
+
+@mixin rotate($x) {
+    -webkit-transform: rotate($x);
+    -moz-transform: rotate($x);
+    -ms-transform: rotate($x);
+    -o-transform: rotate($x);
+    transform: rotate($x);
+}
+
+
+@mixin imageFit($fit) {
+    width: 100%;
+    height: 100%;
+    object-position: 50% 50%;
+    object-fit: $fit;
+}
