@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwellbees_github_io=self.webpackChunkwellbees_github_io||[]).push([[968],{3968:function(e,u,i){i.r(u);i(7313);var l=i(6417);u.default=function(){return(0,l.jsx)("div",{children:"404"})}}}]);
