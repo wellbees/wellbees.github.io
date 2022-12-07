@@ -4,39 +4,41 @@ on:
   push:
     branches:
       - development
-      
+
 permissions: 
   contents: write
 
-jobs:
-  build:
+env:
+  NODE_VERSION: '16.15.0'
 
+jobs:
+  merge-master-back-to-dev:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x, 18.x]
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-    - name: Set Git config
-      run: |
-          git config user.name "actions"
-          git config user.email "github-actions@github.com"
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
 
-    - name: Push
-      uses: s0/git-publish-subdir-action@development
-      env:
-        REPO: self
-        BRANCH: master
-        FOLDER: build
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Set Git config
+        run: |
+            git config user.name "actions"
+            git config user.email "github-actions@github.com"
+
+      - name: Push
+        uses: s0/git-publish-subdir-action@development
+        env:
+          REPO: self
+          BRANCH: master
+          FOLDER: build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
