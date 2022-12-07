@@ -21,6 +21,11 @@ jobs:
 
       - name: Build
         run: npm run build # The build command of your project
+
+      - name: Set Git config
+        run: |
+            git config user.name "actions"
+            git config user.email "github-actions@github.com"
     
       - name: Push
         uses: s0/git-publish-subdir-action@develop
