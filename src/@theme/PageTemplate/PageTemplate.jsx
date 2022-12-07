@@ -9,7 +9,6 @@ function PageTemplate(props) {
 		<div>
 			<Header />
 			<Content />
-			<Footer />
 		</div>
 	);
 }
