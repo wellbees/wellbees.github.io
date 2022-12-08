@@ -40,7 +40,7 @@ function PageApp() {
 					)}
 					{publicRepos.map(item => (
 						<div key={item.id} className="p-3 w-full sm:w-1/2">
-							<div className="border border-gray-300 rounded-md py-3 px-4 h-full flex flex-col justify-center">
+							<div className="border border-gray-200 bg-white/50 rounded-md py-3 px-4 h-full flex flex-col justify-center">
 								<a
 									target="_blank"
 									rel="noreferrer"
